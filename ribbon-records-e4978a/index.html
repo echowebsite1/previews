@@ -47,7 +47,19 @@ footer{text-align:center;padding:30px 0 110px;opacity:.7;font-size:14px}
 @media (max-width:900px){.hero,.story{grid-template-columns:1fr}.hero .polas{order:0}.board ul{grid-template-columns:1fr}.polas{height:clamp(340px,80vw,480px)}}
 @media (max-width:560px){.wrap{width:calc(100% - 36px)}.hero{padding:110px 0 50px}.stamp{width:104px;height:104px;font-size:14px}.pill{display:none}
   .mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;inset:auto 0 0;z-index:25;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--paper)}
-  .mbar a{text-align:center;padding:14px;border-radius:12px;font-weight:700;text-decoration:none;background:var(--rich);color:#fff}.mbar a+a{background:transparent;color:var(--ink);border:2px solid var(--ink)}.tag{bottom:80px}}</style></head><body><header class="top" id="top"><a class="mark" href="#"><span>Ribbon Records</span></a><a class="pill" href="tel:+13094422288">Call</a></header>
+  .mbar a{text-align:center;padding:14px;border-radius:12px;font-weight:700;text-decoration:none;background:var(--rich);color:#fff}.mbar a+a{background:transparent;color:var(--ink);border:2px solid var(--ink)}.tag{bottom:80px}}</style><style id="claim-style">
+#claim{position:fixed;left:16px;bottom:16px;z-index:60;font:600 13px/1.4 system-ui,-apple-system,Segoe UI,sans-serif}
+#claim>button{border:0;cursor:pointer;padding:9px 14px;border-radius:999px;background:rgba(17,17,17,.86);color:#fff;font:inherit;
+ box-shadow:0 6px 20px -8px rgba(0,0,0,.5);display:flex;gap:8px;align-items:center}
+#claim>button b{background:#fff;color:#111;border-radius:999px;padding:2px 9px;font-weight:700}
+#claim .card{display:none;position:absolute;left:0;bottom:calc(100% + 10px);width:min(320px,calc(100vw - 32px));box-sizing:border-box;
+ background:#fff;color:#16181c;border-radius:16px;padding:16px 16px 14px;box-shadow:0 18px 50px -12px rgba(0,0,0,.45);font-weight:400;font-size:15px;line-height:1.5}
+#claim.open .card{display:block}#claim .card h3{margin:0 0 6px;font-size:17px;line-height:1.25}#claim .card p{margin:0 0 10px}
+#claim .card .yes{display:block;text-align:center;text-decoration:none;background:#16181c;color:#fff;border-radius:11px;padding:12px;font-weight:700;margin-top:4px}
+#claim .card .small{color:#5d626b;font-size:13px;margin:8px 0 0}
+#claim .card .x{position:absolute;top:8px;right:10px;border:0;background:none;font-size:20px;color:#888;cursor:pointer}
+@media (max-width:560px){#claim.site{bottom:80px}}
+</style></head><body><header class="top" id="top"><a class="mark" href="#"><span>Ribbon Records</span></a><a class="pill" href="tel:+13094422288">Call</a></header>
 <main><div class="wrap hero"><div><span class="eyebrow">Thrift store · West Main Street, Peoria, IL</span><h1>Vinyl treasures on <em>West Main</em></h1><p class="lede">Discover hidden gems in music and more. Unearth unique finds every visit.</p>
 <div class="ctas"><a class="btn solid" href="tel:+13094422288">Call (309) 442-2288</a><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=641+West+Main+Street%2C+Peoria%2C+IL" target="_blank" rel="noopener">Get directions</a>
 </div></div>
@@ -60,7 +72,7 @@ footer{text-align:center;padding:30px 0 110px;opacity:.7;font-size:14px}
 <a class="num" href="tel:+13094422288">(309) 442-2288</a><a class="mail" href="mailto:ribbonpeoria@gmail.com">ribbonpeoria@gmail.com</a>
 <div class="ctas"><a class="btn solid" href="https://www.google.com/maps/search/?api=1&amp;query=641+West+Main+Street%2C+Peoria%2C+IL" target="_blank" rel="noopener">Get directions</a><a class="btn" href="mailto:ribbonpeoria@gmail.com">Send an email</a></div></div></section>
 </main><footer>© 2026 Ribbon Records · Peoria, IL</footer>
-<div class="tag">Preview · not live yet</div>
+<div id="claim" class="site"><div class="card" role="dialog" aria-label="About this preview"><button class="x" aria-label="Close" onclick="event.stopPropagation();this.closest('#claim').classList.remove('open')">×</button><h3>This preview was made for Ribbon Records</h3><p>Dennis Goodwin built it for free so you can see it working first. It isn't live yet and nobody else can find it. If you'd like it as your real website, just reply <b>"yes"</b> to Dennis Goodwin's email and he'll take care of the rest.</p><p class="small">Nothing to pay unless you decide you want it.</p></div><button type="button" onclick="this.parentNode.classList.toggle('open')">Preview <b>want this site?</b></button></div>
 <nav class="mbar"><a href="tel:+13094422288">Call</a><a href="https://www.google.com/maps/search/?api=1&amp;query=641+West+Main+Street%2C+Peoria%2C+IL" target="_blank" rel="noopener">Directions</a></nav>
 <script>
 (function(){var t=document.getElementById('top');if(t){var f=function(){t.classList.toggle('solid',scrollY>40)};f();addEventListener('scroll',f,{passive:true})}
@@ -75,4 +87,4 @@ var open=false,known=false,until='';document.querySelectorAll('tr[data-days]').f
 var t=r.querySelector('td').textContent.split(/[–—-]/);var a=tm(t[0]||''),b=tm(t[1]||'');if(a!=null&&b!=null&&mins>=a&&mins<b){open=true;until=(t[1]||'').trim()}});
 document.querySelectorAll('[data-hours]').forEach(function(o){if(!known)return;if(!('dot' in o.dataset))o.textContent=open?(o.dataset.long&&until?'Open now · until '+until:'Open now'):'Closed now';o.classList.toggle('is-open',open)})})();
 </script></body></html>
-<!-- echo:cc3a62b148b3 -->
+<!-- echo:7d43dfbb8aaa -->

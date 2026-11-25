@@ -87,4 +87,4 @@ var open=false,known=false,until='';document.querySelectorAll('tr[data-days]').f
 var t=r.querySelector('td').textContent.split(/[–—-]/);var a=tm(t[0]||''),b=tm(t[1]||'');if(a!=null&&b!=null&&mins>=a&&mins<b){open=true;until=(t[1]||'').trim()}});
 document.querySelectorAll('[data-hours]').forEach(function(o){if(!known)return;if(!('dot' in o.dataset))o.textContent=open?(o.dataset.long&&until?'Open now · until '+until:'Open now'):'Closed now';o.classList.toggle('is-open',open)})})();
 </script></body></html>
-<!-- echo:fbea554c6364 -->
+<!-- echo:d813053b45d2 -->
